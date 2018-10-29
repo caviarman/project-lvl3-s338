@@ -1,6 +1,6 @@
 <?php
 
-namespace Laravel\Lumen\Testing\Tests;
+namespace Tests;
 
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
