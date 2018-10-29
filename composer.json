@@ -1,5 +1,6 @@
 {
     "name": "vilin/page-analizer",
+    "version": "0.1.0",
     "description": "page analizer",
     "type": "project",
     "license": "MIT",
