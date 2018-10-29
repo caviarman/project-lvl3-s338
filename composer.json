@@ -1,0 +1,26 @@
+{
+    "name": "vilin/page-analizer",
+    "description": "page analizer",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vladimir Ilin",
+            "email": "mark09072010@gmail.com"
+        }
+    ],
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpcbf": "phpcbf",
+        "phpunit": "phpunit",
+        "test": "phpunit tests"
+    },
+    "require": {
+    },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "squizlabs/php_codesniffer": "*",
+        "codeclimate/php-test-reporter": "dev-master"
+      }
+
+}
