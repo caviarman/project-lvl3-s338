@@ -63,9 +63,22 @@
     </form>
   </div>
 </nav>
-
+<div class="jumbotron">
+        <h1 class="display-4">Analyzer</h1>
+        <p class="lead">This service will analize your webpage.</p>
+        <hr class="my-4">
+        <p>Enter URL for test:</p>
+        <p>
+        <form action="#" method="POST" class="form-inline">
+            <div class="form-group mx-sm-1">
+                <input type="text" name="url" id="inputUrl" required class="form-control" placeholder="https://">
+            </div>
+            <button type="submit" class="btn btn-primary">Go</button>
+        </form>
+        </p>
+</div>
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS 
     <script 
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
@@ -80,6 +93,6 @@
     src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" 
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
     crossorigin="anonymous">
-    </script>
+    </script>-->
   </body>
 </html>
