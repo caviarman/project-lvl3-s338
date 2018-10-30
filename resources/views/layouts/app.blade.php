@@ -78,7 +78,7 @@
         <p>
         <form action="/domains" method="POST" class="form-inline">
             <div class="form-group mx-sm-1">
-                <input type="text" name="url" id="inputUrl" required class="form-control" placeholder="https://">
+                <input type="text" name="address" id="url" required class="form-control" placeholder="https://">
             </div>
             <button type="submit" class="btn btn-primary">Go</button>
         </form>
