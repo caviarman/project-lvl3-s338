@@ -1,5 +1,9 @@
 <?php
-
+if (getenv('DATABASE_URL')) {
+    $connection = 'pgsql';
+} else {
+    $connection = 'sqlite';
+}
 return [
 
     /*
@@ -13,7 +17,7 @@ return [
     |
     */
 
-    'default' => 'sqlite',
+    'default' => $connection,
 
     /*
     |--------------------------------------------------------------------------
