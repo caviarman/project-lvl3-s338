@@ -28,6 +28,6 @@ $router->post('/domains', function (Request $request) {
 });
 
 $router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
-    $address = DB::select('select * from domains where id = ?', [$id]);
+    $address = DB::table('domains')->where('id', '=', $id)->get();
     return view('domain', ['domain' => $address[0]]);
 }]);
