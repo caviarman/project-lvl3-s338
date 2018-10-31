@@ -3,7 +3,6 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Validator;
 
 $router->get('/', function () {
     return view('index');
@@ -27,7 +26,12 @@ $router->post('/domains', function (Request $request) {
     return redirect()->route('domains.show', ['id' => $id]);
 });
 
-$router->get('domains/{id}', ['as' => 'domains.show', function ($id) {
-    $address = DB::table('domains')->where('id', '=', $id)->get();
-    return view('domain', ['domain' => $address[0]]);
+$router->get('/domains/{id}', ['as' => 'domains.show', function ($id) {
+    $domain = DB::table('domains')->where('id', '=', $id)->paginate(1);
+    return view('domain', ['domains' => $domain]);
+}]);
+
+$router->get('/domains', ['as' => 'domains.all', function () {
+    $domains = DB::table('domains')->paginate(5);
+    return view('domain', ['domains' => $domains]);
 }]);
