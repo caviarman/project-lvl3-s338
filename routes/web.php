@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Validator;
 
 $router->get('/', function () {
     return view('index');
@@ -10,7 +11,11 @@ $router->get('/', function () {
 
 $router->post('/domains', function (Request $request) {
     $name = $request->input('address');
-    $this->validate($request, ['address' => 'active_url']);
+    $validator = Validator::make($request->all(), ['address' => 'active_url']);
+    if ($validator->fails()) {
+        $errors = $validator->errors();
+        return view('index', ['error' => $errors->first('address')]);
+    }
     $time = Carbon::now()->toRfc2822String();
     $id = DB::table('domains')->insertGetId(
         [

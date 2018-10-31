@@ -16,6 +16,11 @@
         </form>
         </p>
 </div>
+@if ($error ?? null)
+<div class="alert alert-danger" role="alert">
+    <?= $error ?>
+</div>
+@endif
 @endsection
 
  
