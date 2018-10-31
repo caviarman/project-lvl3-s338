@@ -15,9 +15,6 @@
     <title>Page Analyzer</title>
   </head>
   <body>
-
-  @section('navbar')
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Navbar</a>
   <button 
@@ -67,24 +64,9 @@
   </div>
 </nav>
 
-@show
-
-@section('jumbotron')
-<div class="jumbotron">
-        <h1 class="display-4">Analyzer</h1>
-        <p class="lead">This service will analize your webpage.</p>
-        <hr class="my-4">
-        <p>Enter URL for test:</p>
-        <p>
-        <form action="/domains" method="POST" class="form-inline">
-            <div class="form-group mx-sm-1">
-                <input type="text" name="address" id="url" required class="form-control" placeholder="https://">
-            </div>
-            <button type="submit" class="btn btn-primary">Go</button>
-        </form>
-        </p>
+ <div class="container">
+  @yield('content') 
 </div>
-@show
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS 
