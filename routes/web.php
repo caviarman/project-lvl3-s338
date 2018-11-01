@@ -27,7 +27,7 @@ $router->post('/domains', function (Request $request) {
 });
 
 $router->get('/domains/{id}', ['as' => 'domains.show', function ($id) {
-    $domain = DB::table('domains')->where('id', '=', $id)->paginate(1);
+    $domain = DB::table('domains')->where('id', '=', $id)->get();
     return view('domain', ['domains' => $domain]);
 }]);
 
