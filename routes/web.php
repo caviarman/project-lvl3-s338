@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use DiDom\Document;
 
 $router->get('/', function () {
     return view('index');
@@ -18,6 +19,23 @@ $router->post('/domains', function (Request $request) {
     $res = app()->make('GuzzleHttp\\Client')->request('GET', $name);
     $code = $res->getStatusCode();
     $body = $res->getBody()->getContents();
+    $document = new Document($body);
+    if ($document->has('h1')) {
+        $h1 = $document->find('h1')[0]->text();
+    } else {
+        $h1 = null;
+    }
+    if ($document->has('meta[name=keywords]')) {
+        $keywords = $document->find('meta[name=keywords]')[0]->getAttribute('content');
+    } else {
+        $keywords = null;
+    }
+    if ($document->has('meta[name=description]')) {
+        $description = $document->find('meta[name=description]')[0]->getAttribute('content');
+    } else {
+        $description = null;
+    }
+
     if ($res->getHeader('content-length')) {
         $contentLength = $res->getHeader('content-length')[0];
     } else {
@@ -29,6 +47,9 @@ $router->post('/domains', function (Request $request) {
             'name' => $name,
             'code' => $code,
             'contentLength' => $contentLength,
+            'h1' => $h1,
+            'keywords' => $keywords,
+            'description' => $description,
             'created_at' => $time,
             'updated_at' => $time
         ]
