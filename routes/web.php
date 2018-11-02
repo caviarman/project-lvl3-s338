@@ -15,10 +15,20 @@ $router->post('/domains', function (Request $request) {
         $errors = $validator->errors();
         return view('index', ['error' => $errors->first('address')]);
     }
+    $res = app()->make('GuzzleHttp\\Client')->request('GET', $name);
+    $code = $res->getStatusCode();
+    $body = $res->getBody()->getContents();
+    if ($res->getHeader('content-length')) {
+        $contentLength = $res->getHeader('content-length')[0];
+    } else {
+        $contentLength = strlen($body);
+    }
     $time = Carbon::now()->toRfc2822String();
     $id = DB::table('domains')->insertGetId(
         [
             'name' => $name,
+            'code' => $code,
+            'contentLength' => $contentLength,
             'created_at' => $time,
             'updated_at' => $time
         ]
