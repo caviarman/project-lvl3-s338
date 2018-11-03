@@ -8,7 +8,7 @@
         <hr class="my-4">
         <p>Enter URL for test:</p>
         <p>
-        <form action="/domains" method="POST" class="form-inline">
+        <form action="{{ route('domains.save') }}" method="POST" class="form-inline">
             <div class="form-group mx-sm-1">
                 <input type="text" name="address" id="url" required class="form-control" placeholder="https://">
             </div>
